@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Fraunces', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+  --font-sans: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  --color-background: #171512;
+  --color-surface: #211e1a;
+  --color-foreground: #f4efe6;
+  --color-muted: #d8c7a8;
+  --color-wine: #7a2924;
+  --color-copper: #b68a52;
+  --color-line: rgba(216, 199, 168, 0.22);
+  --color-warm-background: #f4efe6;
+  --color-warm-foreground: #211e1a;
+  --color-warm-body: #554a3d;
+  --color-warm-muted: #7a5e3d;
+  --color-warm-line: rgba(122, 94, 61, 0.22);
+  --container-max: 1280px;
+  --container-padding: clamp(1rem, 4vw, 3rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(90deg, rgba(182, 138, 82, 0.08) 1px, transparent 1px) 0 0 / 72px 72px,
+    radial-gradient(circle at 82% 16%, rgba(122, 41, 36, 0.24), transparent 34rem),
+    var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-copper);
+  color: var(--color-background);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-copper);
+}
+
+img,
+picture,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+.site-container {
+  width: min(100% - (var(--container-padding) * 2), var(--container-max));
+  margin-inline: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
