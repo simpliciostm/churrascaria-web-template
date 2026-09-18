@@ -15,20 +15,9 @@ const navigationItems = [
   { label: 'Localização', href: '#localizacao' },
 ];
 
-function createWhatsappHref(whatsapp: string | null) {
-  if (!whatsapp) {
-    return null;
-  }
-
-  const digits = whatsapp.replace(/\D/g, '');
-
-  return digits ? `https://wa.me/${digits}` : null;
-}
-
 function Header({ restaurant }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuId = useId();
-  const whatsappHref = createWhatsappHref(restaurant.whatsapp);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
@@ -59,15 +48,20 @@ function Header({ restaurant }: HeaderProps) {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-[linear-gradient(180deg,rgba(23,21,18,0.78),rgba(23,21,18,0))]">
-      <div className="site-container flex h-[5.5rem] items-center justify-between gap-6 sm:h-24">
+    <header className="absolute inset-x-0 top-0 z-30 border-b border-white/10 bg-[rgba(21,18,15,0.22)] text-[var(--color-foreground)] backdrop-blur-[2px]">
+      <div className="site-container flex h-20 items-center justify-between gap-6 lg:h-24">
         <a
           href="#inicio"
-          className="font-display text-[1.85rem] font-semibold tracking-[0.08em] text-[var(--color-foreground)] outline-offset-8 transition-colors hover:text-[var(--color-muted)] sm:text-3xl lg:text-[2rem]"
+          className="inline-flex flex-col outline-offset-8 transition-colors hover:text-[var(--color-muted)]"
           aria-label={`${restaurant.name} - voltar ao início`}
           onClick={closeMenu}
         >
-          {restaurant.shortName}
+          <span className="font-display text-[1.65rem] font-semibold leading-none tracking-[0.12em] sm:text-[1.9rem]">
+            {restaurant.shortName}
+          </span>
+          <span className="mt-1 text-[0.62rem] font-bold uppercase tracking-[0.28em] text-[var(--color-muted)]">
+            {restaurant.footer.category}
+          </span>
         </a>
 
         <nav
@@ -78,25 +72,12 @@ function Header({ restaurant }: HeaderProps) {
             <a
               key={item.href}
               href={item.href}
-              className="text-[0.92rem] font-semibold text-[var(--color-muted)] outline-offset-8 transition-colors hover:text-[var(--color-foreground)] xl:text-[0.95rem]"
+              className="text-[0.95rem] font-semibold text-white/82 outline-offset-8 transition-colors hover:text-[var(--color-copper)]"
             >
               {item.label}
             </a>
           ))}
         </nav>
-
-        <div className="hidden items-center lg:flex">
-          {whatsappHref ? (
-            <a
-              href={whatsappHref}
-              className="border border-[var(--color-copper)] px-5 py-2.5 text-[0.95rem] font-semibold text-[var(--color-foreground)] outline-offset-8 transition-colors hover:bg-[var(--color-copper)] hover:text-[var(--color-background)]"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
-          ) : null}
-        </div>
 
         <button
           type="button"
@@ -120,33 +101,21 @@ function Header({ restaurant }: HeaderProps) {
         aria-hidden={!isMenuOpen}
       >
         <nav
-          className="mb-5 border border-white/12 bg-[rgba(23,21,18,0.96)] p-6"
+          className="mb-5 border border-white/12 bg-[rgba(21,18,15,0.98)] p-5"
           aria-label="Navegação mobile"
         >
-          <div className="flex flex-col gap-2">
+          <div className="grid gap-1">
             {navigationItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="px-1 py-4 text-[1.0625rem] font-semibold text-[var(--color-muted)] outline-offset-4 transition-colors hover:text-[var(--color-foreground)]"
+                className="min-h-12 px-1 py-3 text-[1.0625rem] font-semibold text-[var(--color-muted)] outline-offset-4 transition-colors hover:text-[var(--color-foreground)]"
                 onClick={closeMenu}
               >
                 {item.label}
               </a>
             ))}
           </div>
-
-          {whatsappHref ? (
-            <a
-              href={whatsappHref}
-              className="mt-5 block border border-[var(--color-copper)] px-5 py-3 text-center text-sm font-semibold text-[var(--color-foreground)] outline-offset-4 transition-colors hover:bg-[var(--color-copper)] hover:text-[var(--color-background)]"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMenu}
-            >
-              WhatsApp
-            </a>
-          ) : null}
         </nav>
       </div>
     </header>

@@ -10,6 +10,50 @@ O cardápio definido em `src/data/restaurant.ts` usa categorias, pratos, fotogra
 
 Os preços do cardápio devem permanecer como números no `RestaurantConfig`; a interface é responsável por formatá-los em BRL.
 
+## Personalizando para uma nova churrascaria
+
+Na maioria dos casos, a personalização deve acontecer em `src/data/restaurant.ts`. Componentes React não precisam ser alterados para trocar nome, cidade, contatos, endereço, cardápio, preços, textos, imagens e SEO.
+
+Checklist curto:
+
+1. Atualize identidade: `name`, `shortName`, categoria e textos institucionais.
+2. Atualize contatos: telefone, WhatsApp, Instagram e outros links disponíveis.
+3. Atualize endereço: rua, número, bairro, cidade, estado, CEP, país e Google Maps quando houver.
+4. Preencha horários em `openingHours`; use strings como `Fechado` ou `11h–14h30 / 18h–23h` quando necessário.
+5. Revise categorias, itens, preços, descrições, ordem e itens `featured` do cardápio.
+6. Substitua imagens demonstrativas por fotos autorizadas, ajustando `src`, `alt`, `width`, `height`, `isPlaceholder` e `sourceUrl` quando aplicável.
+7. Substitua reviews placeholders por depoimentos reais ou deixe `reviews.items` vazio para ocultar a seção.
+8. Configure SEO: `title`, `description`, `siteUrl`, `ogImage`, `locale` e `indexable`.
+9. Mantenha `seo.indexable: false` para demo; use `true` somente no site oficial.
+10. Execute `npm run build` para validar a versão final.
+11. Faça deploy apenas depois de revisar conteúdo real e permissões de uso.
+
+Arquivos normalmente alterados:
+
+- `src/data/restaurant.ts`
+- arquivos locais de imagem, caso a personalização deixe de usar URLs remotas
+
+Não é esperado alterar componentes React para criar uma nova demonstração.
+
+## Checklist de publicação
+
+Antes de transformar uma demo em site oficial:
+
+- substituir conteúdo demonstrativo;
+- confirmar preços;
+- confirmar horários;
+- confirmar telefone;
+- confirmar endereço;
+- confirmar redes sociais;
+- adicionar Google Maps quando disponível;
+- substituir reviews placeholders;
+- substituir fotos demonstrativas por imagens autorizadas;
+- configurar `seo.siteUrl`;
+- configurar `seo.ogImage`;
+- mudar `seo.indexable` para `true`;
+- revisar Schema.org gerado;
+- executar build final.
+
 ## Stack
 
 - React

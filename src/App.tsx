@@ -7,6 +7,7 @@ import Hero from './components/sections/Hero';
 import Location from './components/sections/Location';
 import Menu from './components/sections/Menu';
 import MenuShowcase from './components/sections/MenuShowcase';
+import QuickInfo from './components/sections/QuickInfo';
 import Reviews from './components/sections/Reviews';
 import { restaurant } from './data/restaurant';
 
@@ -16,6 +17,7 @@ function App() {
       <Header restaurant={restaurant} />
       <main>
         <Hero restaurant={restaurant} />
+        <QuickInfo restaurant={restaurant} />
         <Menu restaurant={restaurant} />
         <MenuShowcase restaurant={restaurant} />
         <About restaurant={restaurant} />

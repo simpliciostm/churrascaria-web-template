@@ -5,32 +5,22 @@ interface ReviewsProps {
 }
 
 function ReviewQuote({ item, index }: { item: RestaurantReviewItem; index: number }) {
-  const isOffset = index % 2 === 1;
-
   return (
-    <blockquote
-      className={`border-t border-[var(--color-warm-line)] py-10 sm:py-11 lg:py-12 ${
-        isOffset ? 'lg:ml-auto lg:w-[72%]' : 'lg:w-[78%]'
-      }`}
-    >
-      <div className="grid gap-5 sm:grid-cols-[4rem_1fr] sm:gap-8">
-        <span
-          className="font-display text-3xl font-semibold leading-none text-[var(--color-copper)]"
-          aria-hidden="true"
-        >
-          {String(index + 1).padStart(2, '0')}
-        </span>
+    <blockquote className="border border-[var(--color-warm-line)] bg-[rgba(255,255,255,0.32)] p-6">
+      <span
+        className="text-lg font-bold leading-none text-[var(--color-copper)]"
+        aria-hidden="true"
+      >
+        {String(index + 1).padStart(2, '0')}
+      </span>
 
-        <div className="max-w-[38rem]">
-          <p className="font-display text-[clamp(1.125rem,5.2vw,1.3125rem)] font-semibold leading-[1.42] text-[var(--color-warm-foreground)] sm:text-[clamp(1.5rem,2.2vw,1.875rem)] sm:leading-[1.34]">
-            “{item.quote}”
-          </p>
+      <p className="mt-4 font-display text-[1.25rem] font-semibold leading-7 text-[var(--color-warm-foreground)]">
+        “{item.quote}”
+      </p>
 
-          <cite className="mt-5 block not-italic text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-warm-muted)] sm:mt-5 sm:text-sm">
-            — {item.author}
-          </cite>
-        </div>
-      </div>
+      <cite className="mt-5 block not-italic text-sm font-bold text-[var(--color-warm-body)]">
+        {item.author}
+      </cite>
     </blockquote>
   );
 }
@@ -38,26 +28,32 @@ function ReviewQuote({ item, index }: { item: RestaurantReviewItem; index: numbe
 function Reviews({ restaurant }: ReviewsProps) {
   const { reviews } = restaurant;
 
+  if (reviews.items.length === 0) {
+    return null;
+  }
+
   return (
     <section
       id="avaliacoes"
-      className="bg-[var(--color-warm-background)] text-[var(--color-warm-foreground)]"
+      className="bg-[var(--color-warm-surface)] text-[var(--color-warm-foreground)]"
     >
-      <div className="site-container border-t border-[var(--color-warm-line)] py-20 sm:py-20 lg:py-28">
-        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.35fr] lg:gap-12">
-          <p className="text-sm font-bold uppercase tracking-[0.24em] text-[var(--color-warm-muted)]">
-            {reviews.eyebrow}
-          </p>
+      <div className="site-container border-b border-[var(--color-warm-line)] py-12 sm:py-14 lg:py-16">
+        <div className="grid gap-8 lg:grid-cols-[0.6fr_1.7fr] lg:items-start lg:gap-14">
+          <div className="max-w-[24rem]">
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.26em] text-[var(--color-warm-muted)]">
+              {reviews.eyebrow}
+            </p>
 
-          <h2 className="max-w-3xl font-display text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[0.98] text-[var(--color-warm-foreground)]">
-            {reviews.title}
-          </h2>
-        </div>
+            <h2 className="font-display text-[clamp(2rem,4vw,3.05rem)] font-semibold leading-[0.96]">
+              {reviews.title}
+            </h2>
+          </div>
 
-        <div className="mt-12 sm:mt-16 lg:mt-18">
-          {reviews.items.map((item, index) => (
-            <ReviewQuote key={`${item.quote}-${index}`} item={item} index={index} />
-          ))}
+          <div className="grid gap-4 md:grid-cols-3">
+            {reviews.items.map((item, index) => (
+              <ReviewQuote key={`${item.quote}-${index}`} item={item} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

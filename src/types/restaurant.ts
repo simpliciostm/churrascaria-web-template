@@ -24,14 +24,19 @@ export interface RestaurantReviewSource {
 }
 
 export interface RestaurantOpeningHour {
+  // Exemplos: "Segunda", "Terça a sexta", "Sábado e domingo".
   days: string;
+  // Exemplos: "Fechado", "11h–14h30 / 18h–23h", "11h–23h".
   time: string;
 }
 
 export interface RestaurantHeroImage {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
   isDemo: boolean;
+  sourceUrl?: string;
 }
 
 export interface RestaurantHeroContent {
@@ -44,6 +49,8 @@ export interface RestaurantHeroContent {
 export interface RestaurantMenuImage {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
   isPlaceholder?: boolean;
   sourceUrl?: string;
 }
@@ -80,9 +87,12 @@ export interface RestaurantMenuContent {
 export interface RestaurantSectionImage {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
   isPlaceholder: boolean;
-  creditLabel: string;
-  creditUrl: string;
+  sourceUrl?: string;
+  creditLabel?: string;
+  creditUrl?: string;
   label?: string;
   category?: 'fire' | 'food' | 'grill' | 'table';
 }
@@ -101,6 +111,11 @@ export interface RestaurantExperienceContent {
   title: string;
   description: string;
   keywords: string[];
+  highlights?: {
+    title: string;
+    description: string;
+    icon: 'flame' | 'users' | 'utensils';
+  }[];
   images: RestaurantSectionImage[];
 }
 

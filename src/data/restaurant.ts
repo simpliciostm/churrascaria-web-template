@@ -38,22 +38,24 @@ export const restaurant: RestaurantConfig = {
     indexable: false,
   },
   hero: {
-    eyebrow: 'Churrascaria',
+    eyebrow: 'Churrasco e bons encontros',
     title: 'Tradição servida à mesa.',
-    description: 'Churrasco, comida bem servida e bons momentos em Bauru.',
+    description: 'Carne na brasa, comida bem servida e tempo para aproveitar.',
     image: {
       // Imagem remota demonstrativa. Substituir por fotografia autorizada antes de publicação comercial.
       src: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=2200&q=82',
       alt: 'Carne sendo preparada na brasa em imagem demonstrativa de churrasco',
+      width: 2200,
+      height: 1400,
       isDemo: true,
+      sourceUrl: 'https://unsplash.com/photos/cooked-meat-on-black-metal-grill-9aOswReDKPo',
     },
   },
   menu: {
     // Conteúdo demonstrativo do template. Substituir categorias, pratos, bebidas, imagens e preços por dados reais e autorizados durante a personalização.
-    eyebrow: 'DO FOGO À MESA',
-    title: 'Nosso cardápio',
-    description:
-      'Uma seleção demonstrativa para apresentar pratos, acompanhamentos e outras opções da casa.',
+    eyebrow: 'NOSSO CARDÁPIO',
+    title: 'Cortes, pratos e acompanhamentos.',
+    description: 'Do churrasco aos pratos da casa, veja opções e preços de forma simples.',
     categories: [
       {
         id: 'churrasco',
@@ -68,6 +70,8 @@ export const restaurant: RestaurantConfig = {
             image: {
               src: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=82',
               alt: 'Carne sendo preparada na brasa em imagem demonstrativa',
+              width: 900,
+              height: 675,
               isPlaceholder: true,
               sourceUrl: 'https://unsplash.com/photos/cooked-meat-on-black-metal-grill-9aOswReDKPo',
             },
@@ -81,7 +85,7 @@ export const restaurant: RestaurantConfig = {
           {
             id: 'linguica-artesanal',
             name: 'Linguiça artesanal',
-            description: 'Porção demonstrativa preparada na churrasqueira.',
+            description: 'Receita tradicional para compartilhar.',
             price: 29.9,
           },
         ],
@@ -99,6 +103,8 @@ export const restaurant: RestaurantConfig = {
             image: {
               src: 'https://images.unsplash.com/photo-1743630458593-286a8ae99625?auto=format&fit=crop&w=1200&q=82',
               alt: 'Prato brasileiro com arroz, feijão e acompanhamentos em imagem demonstrativa',
+              width: 900,
+              height: 675,
               isPlaceholder: true,
               sourceUrl:
                 'https://unsplash.com/photos/a-plate-of-rice-beans-and-plantains-Ycuvvz_Px8c',
@@ -107,7 +113,7 @@ export const restaurant: RestaurantConfig = {
           {
             id: 'almoco-da-casa',
             name: 'Almoço da casa',
-            description: 'Opção demonstrativa para apresentar uma refeição completa.',
+            description: 'Uma opção completa para o almoço.',
             price: 42.9,
           },
         ],
@@ -125,15 +131,17 @@ export const restaurant: RestaurantConfig = {
           {
             id: 'porcao-de-mandioca',
             name: 'Porção de mandioca',
-            description: 'Acompanhamento demonstrativo servido para compartilhar.',
+            description: 'Mandioca macia para acompanhar o churrasco.',
             price: 18.9,
             featured: true,
             image: {
-              src: 'https://images.unsplash.com/photo-1621851709622-e19c9a4f0cc5?auto=format&fit=crop&w=1200&q=82',
-              alt: 'Churrasqueira acesa em imagem demonstrativa para cardápio',
+              src: 'https://images.unsplash.com/photo-1709114107937-6dec855d9ab5?auto=format&fit=crop&w=1200&q=82',
+              alt: 'Acompanhamentos brasileiros servidos à mesa em imagem demonstrativa',
+              width: 900,
+              height: 675,
               isPlaceholder: true,
               sourceUrl:
-                'https://unsplash.com/photos/burning-charcoal-on-charcoal-grill-SHFQI_DGgAU',
+                'https://unsplash.com/photos/a-table-topped-with-plates-of-food-and-bowls-of-food-Z2YnKo17mlI',
             },
           },
         ],
@@ -151,7 +159,7 @@ export const restaurant: RestaurantConfig = {
           {
             id: 'refrigerante',
             name: 'Refrigerante',
-            description: 'Opção demonstrativa para acompanhar a refeição.',
+            description: 'Para acompanhar a refeição.',
             price: 8.9,
           },
           {
@@ -164,9 +172,9 @@ export const restaurant: RestaurantConfig = {
       },
     ],
     showcase: {
-      eyebrow: 'ALGUNS DOS NOSSOS PRATOS',
-      title: 'Da brasa para a mesa.',
-      description: 'Uma seleção visual demonstrativa para apresentar sabores e pratos da casa.',
+      eyebrow: 'DA BRASA PARA A MESA',
+      title: 'Alguns dos nossos pratos.',
+      description: 'Sabores que fazem parte da experiência.',
     },
   },
   about: {
@@ -175,30 +183,54 @@ export const restaurant: RestaurantConfig = {
     eyebrow: 'A CASA',
     title: 'Um lugar feito para receber.',
     paragraphs: [
-      'Churrasco, comida bem servida e aquele almoço que pede mais alguns minutos à mesa.',
-      'Um espaço para reunir a família, encontrar os amigos e aproveitar sem pressa.',
+      'Boa comida, atendimento próximo e uma mesa pronta para reunir pessoas.',
+      'Um espaço para almoçar, encontrar os amigos e aproveitar sem pressa.',
     ],
     image: {
       // Imagem remota demonstrativa. Substituir por fotografia autorizada antes de publicação comercial.
       src: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1400&q=82',
       alt: 'Mesa de restaurante com carne servida em imagem demonstrativa',
+      width: 1400,
+      height: 1050,
       isPlaceholder: true,
+      sourceUrl: 'https://unsplash.com/photos/grilled-meat-on-brown-wooden-tray-rnWltIdLPd8',
       creditLabel: 'Foto demonstrativa de Kaysha no Unsplash',
       creditUrl: 'https://unsplash.com/photos/grilled-meat-on-brown-wooden-tray-rnWltIdLPd8',
     },
   },
   experience: {
-    eyebrow: 'À mesa',
-    title: 'Churrasco é comida feita para dividir a mesa.',
+    eyebrow: 'Experiência',
+    title: 'Churrasco, mesa e tempo para ficar.',
     description:
       'Carne na brasa, acompanhamentos e comida bem servida para aproveitar o almoço sem pressa.',
     keywords: ['Churrasco', 'Mesa', 'Almoço'],
+    highlights: [
+      {
+        title: 'Churrasco na brasa',
+        description: 'Sabor e tradição no centro da mesa.',
+        icon: 'flame',
+      },
+      {
+        title: 'Mesa e encontro',
+        description: 'Um lugar para chegar, sentar e aproveitar.',
+        icon: 'users',
+      },
+      {
+        title: 'Comida bem servida',
+        description: 'Pratos e acompanhamentos para dividir.',
+        icon: 'utensils',
+      },
+    ],
     images: [
       {
         // Imagem remota demonstrativa. Substituir por fotografia autorizada antes de publicação comercial.
         src: 'https://images.unsplash.com/photo-1767974968707-db3d448d4ef3?auto=format&fit=crop&w=1600&q=82',
         alt: 'Espetos de carne servidos à mesa em imagem demonstrativa',
+        width: 1600,
+        height: 1280,
         isPlaceholder: true,
+        sourceUrl:
+          'https://unsplash.com/photos/grilled-meat-skewers-on-a-serving-platter-z4MYbjYb5p0',
         creditLabel: 'Foto demonstrativa de tommao wang no Unsplash',
         creditUrl:
           'https://unsplash.com/photos/grilled-meat-skewers-on-a-serving-platter-z4MYbjYb5p0',
@@ -207,59 +239,77 @@ export const restaurant: RestaurantConfig = {
         // Imagem remota demonstrativa. Substituir por fotografia autorizada antes de publicação comercial.
         src: 'https://images.unsplash.com/photo-1657299170240-a1f811379b57?auto=format&fit=crop&w=1100&q=82',
         alt: 'Pessoas reunidas em uma mesa com comida em imagem demonstrativa',
+        width: 1100,
+        height: 825,
         isPlaceholder: true,
+        sourceUrl: 'https://unsplash.com/photos/people-eating-food-at-a-table-LBl3Csr96YI',
         creditLabel: 'Foto demonstrativa de Wasa Crispbread no Unsplash',
         creditUrl: 'https://unsplash.com/photos/people-eating-food-at-a-table-LBl3Csr96YI',
       },
     ],
   },
   gallery: {
-    eyebrow: 'POR AQUI',
-    title: 'Entre a brasa e a mesa.',
-    description: 'Fogo, preparo e momentos que fazem parte da experiência.',
+    eyebrow: 'ENTRE A BRASA E A MESA',
+    title: 'Momentos que fazem parte da experiência.',
+    description: 'Do preparo ao encontro, cada detalhe importa.',
     images: [
       {
         // Imagem demonstrativa genérica. Substituir por fotografia autorizada antes de publicação comercial.
         src: 'https://images.unsplash.com/photo-1621851709622-e19c9a4f0cc5?auto=format&fit=crop&w=1500&q=82',
         alt: 'Carvão aceso em churrasqueira',
+        width: 1000,
+        height: 675,
         isPlaceholder: true,
+        sourceUrl: 'https://unsplash.com/photos/burning-charcoal-on-charcoal-grill-SHFQI_DGgAU',
         creditLabel: 'Foto demonstrativa de Adam Mills no Unsplash',
         creditUrl: 'https://unsplash.com/photos/burning-charcoal-on-charcoal-grill-SHFQI_DGgAU',
         category: 'fire',
       },
       {
         // Imagem demonstrativa genérica. Substituir por fotografia autorizada antes de publicação comercial.
-        src: 'https://images.unsplash.com/photo-1743630458593-286a8ae99625?auto=format&fit=crop&w=1200&q=82',
-        alt: 'Prato com arroz, feijão e acompanhamentos servido à mesa',
+        src: 'https://images.unsplash.com/photo-1558030018-d461fe79233e?auto=format&fit=crop&w=1200&q=82',
+        alt: 'Pessoa cortando carne na tábua durante o preparo',
+        width: 900,
+        height: 675,
         isPlaceholder: true,
-        creditLabel: 'Foto demonstrativa de Jonathan Caliguire no Unsplash',
-        creditUrl: 'https://unsplash.com/photos/a-plate-of-rice-beans-and-plantains-Ycuvvz_Px8c',
+        sourceUrl: 'https://unsplash.com/photos/person-cutting-meat-lanootd2FcU',
+        creditLabel: 'Foto demonstrativa de Emerson Vieira no Unsplash',
+        creditUrl: 'https://unsplash.com/photos/person-cutting-meat-lanootd2FcU',
         category: 'food',
       },
       {
         // Imagem demonstrativa genérica. Substituir por fotografia autorizada antes de publicação comercial.
-        src: 'https://images.unsplash.com/photo-1757961047505-13d5d2a3a911?auto=format&fit=crop&w=1200&q=82',
-        alt: 'Espetos assando em uma churrasqueira',
+        src: 'https://images.unsplash.com/photo-1691200170948-beca4be90d59?auto=format&fit=crop&w=1200&q=82',
+        alt: 'Mesa com carnes e acompanhamentos servidos para compartilhar',
+        width: 900,
+        height: 675,
         isPlaceholder: true,
-        creditLabel: 'Foto demonstrativa de Madeline Liu no Unsplash',
+        sourceUrl:
+          'https://unsplash.com/photos/a-table-topped-with-plates-of-food-next-to-corn-on-the-cob-ppetJpKt0fE',
+        creditLabel: 'Foto demonstrativa de Sheri Silver no Unsplash',
         creditUrl:
-          'https://unsplash.com/photos/chicken-skewers-cooking-on-a-barbecue-grill-RDPDoNJmYko',
-        category: 'grill',
+          'https://unsplash.com/photos/a-table-topped-with-plates-of-food-next-to-corn-on-the-cob-ppetJpKt0fE',
+        category: 'table',
       },
       {
         // Imagem demonstrativa genérica. Substituir por fotografia autorizada antes de publicação comercial.
-        src: 'https://images.unsplash.com/photo-1657299170240-a1f811379b57?auto=format&fit=crop&w=1500&q=82',
-        alt: 'Pessoas compartilhando comida em uma mesa',
+        src: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1500&q=82',
+        alt: 'Pessoas reunidas em uma refeição compartilhada',
+        width: 1000,
+        height: 675,
         isPlaceholder: true,
-        creditLabel: 'Foto demonstrativa de Wasa Crispbread no Unsplash',
-        creditUrl: 'https://unsplash.com/photos/people-eating-food-at-a-table-LBl3Csr96YI',
+        sourceUrl:
+          'https://unsplash.com/photos/people-sitting-in-front-of-table-talking-and-eating-W3SEyZODn8U',
+        creditLabel: 'Foto demonstrativa de Priscilla Du Preez no Unsplash',
+        creditUrl:
+          'https://unsplash.com/photos/people-sitting-in-front-of-table-talking-and-eating-W3SEyZODn8U',
         category: 'table',
       },
     ],
   },
   reviews: {
-    eyebrow: 'Quem vem, conta',
-    title: 'Bom mesmo é quando dá vontade de voltar.',
+    eyebrow: 'O que dizem nossos clientes',
+    title: 'Histórias que nos inspiram.',
     items: [
       {
         quote: 'Comida bem servida, atendimento próximo e aquele almoço que vale a pena repetir.',
@@ -288,10 +338,10 @@ export const restaurant: RestaurantConfig = {
     ],
   },
   locationSection: {
-    eyebrow: 'Venha conhecer',
-    title: 'A mesa está esperando.',
-    description: 'Confira o endereço, os horários e escolha o melhor caminho para chegar.',
-    hoursFallback: 'Consulte os horários do restaurante.',
+    eyebrow: 'Onde nos encontrar',
+    title: 'Venha nos visitar.',
+    description: 'Confira endereço, contato e horários antes de sair.',
+    hoursFallback: 'Consulte os horários',
     contactFallback: 'Canais de contato em breve.',
   },
   footer: {

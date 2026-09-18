@@ -7,19 +7,20 @@
 
 :root {
   color-scheme: dark;
-  --color-background: #171512;
-  --color-surface: #211e1a;
-  --color-foreground: #f4efe6;
-  --color-muted: #d8c7a8;
-  --color-wine: #7a2924;
-  --color-copper: #b68a52;
-  --color-line: rgba(216, 199, 168, 0.22);
-  --color-warm-background: #f4efe6;
-  --color-warm-foreground: #211e1a;
-  --color-warm-body: #554a3d;
-  --color-warm-muted: #7a5e3d;
-  --color-warm-line: rgba(122, 94, 61, 0.22);
-  --container-max: 1280px;
+  --color-background: #15120f;
+  --color-surface: #1e1a16;
+  --color-foreground: #f6efe3;
+  --color-muted: #d8c6a8;
+  --color-wine: #763027;
+  --color-copper: #b98445;
+  --color-line: rgba(216, 198, 168, 0.2);
+  --color-warm-background: #f2eadc;
+  --color-warm-surface: #ebe1d0;
+  --color-warm-foreground: #1f1a15;
+  --color-warm-body: #4e4437;
+  --color-warm-muted: #7b6040;
+  --color-warm-line: rgba(93, 74, 49, 0.2);
+  --container-max: 1360px;
   --container-padding: clamp(1rem, 4vw, 3rem);
 }
 
@@ -42,10 +43,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background:
-    linear-gradient(90deg, rgba(182, 138, 82, 0.08) 1px, transparent 1px) 0 0 / 72px 72px,
-    radial-gradient(circle at 82% 16%, rgba(122, 41, 36, 0.24), transparent 34rem),
-    var(--color-background);
+  background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
 }

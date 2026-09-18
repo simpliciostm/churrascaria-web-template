@@ -36,30 +36,30 @@ function Footer({ restaurant }: FooterProps) {
 
   return (
     <footer className="bg-[var(--color-background)] text-[var(--color-foreground)]">
-      <div className="site-container border-t border-[var(--color-line)] py-12 sm:py-12 lg:py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+      <div className="site-container py-10 sm:py-12 lg:py-14">
+        <div className="grid gap-9 border-b border-[var(--color-line)] pb-9 lg:grid-cols-[0.8fr_1fr_0.8fr] lg:items-center">
           <div>
             <a
               href="#inicio"
-              className="font-display text-[2rem] font-semibold tracking-[0.08em] text-[var(--color-foreground)] outline-offset-8 transition-colors hover:text-[var(--color-muted)]"
+              className="inline-flex flex-col outline-offset-8 transition-colors hover:text-[var(--color-muted)]"
               aria-label={`${restaurant.name} - voltar ao início`}
             >
-              {restaurant.shortName}
+              <span className="font-display text-[2rem] font-semibold leading-none tracking-[0.12em]">
+                {restaurant.shortName}
+              </span>
+              <span className="mt-1 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-[var(--color-muted)]">
+                {restaurant.footer.category}
+              </span>
             </a>
-
-            <p className="mt-4 text-sm font-bold uppercase tracking-[0.22em] text-[var(--color-muted)]">
-              {restaurant.footer.category}
-              {locationLabel ? ` • ${locationLabel}` : ''}
-            </p>
           </div>
 
-          <nav aria-label="Navegação do rodapé" className="lg:justify-self-end">
-            <ul className="grid gap-2 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-1">
+          <nav aria-label="Navegação do rodapé">
+            <ul className="flex flex-wrap gap-x-7 gap-y-3 lg:justify-center">
               {footerNavigation.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="inline-flex min-h-11 items-center text-base font-semibold text-[var(--color-muted)] outline-offset-4 transition-colors hover:text-[var(--color-foreground)] sm:min-h-10"
+                    className="inline-flex min-h-10 items-center text-sm font-semibold text-[var(--color-muted)] outline-offset-4 transition-colors hover:text-[var(--color-foreground)]"
                   >
                     {item.label}
                   </a>
@@ -67,9 +67,25 @@ function Footer({ restaurant }: FooterProps) {
               ))}
             </ul>
           </nav>
+
+          <div className="flex flex-wrap items-center gap-4 lg:justify-end">
+            {instagramHref ? (
+              <a
+                href={instagramHref}
+                className="inline-flex size-11 items-center justify-center border border-white/15 text-[var(--color-muted)] outline-offset-4 transition-colors hover:border-[var(--color-copper)] hover:text-[var(--color-copper)]"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Instagram ${restaurant.socialLinks.instagram}`}
+              >
+                <span className="text-sm font-bold" aria-hidden="true">
+                  IG
+                </span>
+              </a>
+            ) : null}
+          </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-7 border-t border-[var(--color-line)] pt-8 text-[0.9375rem] leading-6 text-[var(--color-muted)] sm:mt-12 sm:gap-6 sm:pt-7 sm:text-sm lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-8 flex flex-col gap-4 text-sm leading-6 text-[var(--color-muted)] lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-2">
             <p>
               © {year} {restaurant.name}
@@ -77,25 +93,7 @@ function Footer({ restaurant }: FooterProps) {
             <p>{restaurant.footer.disclaimer}</p>
           </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-7">
-            {restaurant.socialLinks.instagram && instagramHref ? (
-              <a
-                href={instagramHref}
-                className="inline-flex min-h-11 items-center font-semibold outline-offset-4 transition-colors hover:text-[var(--color-foreground)] sm:min-h-10"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram ↗
-              </a>
-            ) : null}
-
-            <a
-              href="#inicio"
-              className="inline-flex min-h-11 items-center font-semibold outline-offset-4 transition-colors hover:text-[var(--color-foreground)] sm:min-h-10"
-            >
-              Topo ↑
-            </a>
-          </div>
+          {locationLabel ? <p>{locationLabel} • Feito para bons encontros.</p> : null}
         </div>
       </div>
     </footer>
