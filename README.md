@@ -4,6 +4,12 @@ Template/protótipo frontend para sites institucionais estáticos de churrascari
 
 Projeto demonstrativo desenvolvido como conceito visual. Não representa o site oficial do estabelecimento.
 
+## Conteúdo demonstrativo
+
+O cardápio definido em `src/data/restaurant.ts` usa categorias, pratos, fotografias e preços demonstrativos para fins de template. Durante a personalização do site, substitua esses itens por informações reais, atualizadas e autorizadas do restaurante.
+
+Os preços do cardápio devem permanecer como números no `RestaurantConfig`; a interface é responsável por formatá-los em BRL.
+
 ## Stack
 
 - React

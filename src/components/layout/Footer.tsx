@@ -6,6 +6,7 @@ interface FooterProps {
 
 const footerNavigation = [
   { label: 'Início', href: '#inicio' },
+  { label: 'Cardápio', href: '#cardapio' },
   { label: 'A casa', href: '#a-casa' },
   { label: 'Experiência', href: '#experiencia' },
   { label: 'Galeria', href: '#galeria' },

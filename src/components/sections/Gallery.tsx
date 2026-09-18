@@ -54,13 +54,13 @@ function Gallery({ restaurant }: GalleryProps) {
       id="galeria"
       className="bg-[var(--color-warm-background)] text-[var(--color-warm-foreground)]"
     >
-      <div className="site-container py-20 sm:py-20 lg:py-28">
-        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.45fr_0.8fr] lg:gap-14">
+      <div className="site-container py-20 sm:py-20 lg:py-24">
+        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr_0.9fr] lg:gap-12">
           <p className="text-sm font-bold uppercase tracking-[0.24em] text-[var(--color-warm-muted)]">
             {gallery.eyebrow}
           </p>
 
-          <h2 className="max-w-3xl font-display text-[clamp(3rem,8vw,7rem)] font-semibold leading-[0.88] text-[var(--color-warm-foreground)]">
+          <h2 className="max-w-2xl font-display text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[0.98] text-[var(--color-warm-foreground)]">
             {gallery.title}
           </h2>
 
@@ -69,7 +69,7 @@ function Gallery({ restaurant }: GalleryProps) {
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-12 gap-x-6 gap-y-10 sm:mt-16 sm:gap-y-10 lg:mt-20 lg:gap-x-8 lg:gap-y-14">
+        <div className="mt-14 grid grid-cols-12 gap-x-6 gap-y-10 sm:mt-16 sm:gap-y-10 lg:mt-18 lg:gap-x-8 lg:gap-y-14">
           {gallery.images.map((image, index) => (
             <GalleryFigure
               key={image.src}

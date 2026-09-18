@@ -19,6 +19,8 @@ function Hero({ restaurant }: HeroProps) {
   const locationLabel = `${address.city} • ${address.state}`;
   const googleMapsHref = address.googleMapsUrl;
   const whatsappHref = createWhatsappHref(restaurant.whatsapp);
+  const hasMenu = restaurant.menu.categories.some((category) => category.items.length > 0);
+  const hasCtas = hasMenu || googleMapsHref || whatsappHref;
 
   return (
     <section
@@ -48,7 +50,7 @@ function Hero({ restaurant }: HeroProps) {
             {hero.eyebrow} • {locationLabel}
           </p>
 
-          <h1 className="font-display text-[clamp(3.6rem,13vw,8.4rem)] font-semibold leading-[0.88] text-[var(--color-foreground)]">
+          <h1 className="font-display text-[clamp(3.25rem,10vw,7.25rem)] font-semibold leading-[0.9] text-[var(--color-foreground)]">
             {hero.title}
           </h1>
 
@@ -56,12 +58,25 @@ function Hero({ restaurant }: HeroProps) {
             {hero.description}
           </p>
 
-          {googleMapsHref || whatsappHref ? (
+          {hasCtas ? (
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              {hasMenu ? (
+                <a
+                  href="#cardapio"
+                  className="inline-flex min-h-12 items-center justify-center border border-[var(--color-copper)] bg-[var(--color-copper)] px-6 text-sm font-bold text-[var(--color-background)] outline-offset-4 transition-colors hover:bg-transparent hover:text-[var(--color-foreground)]"
+                >
+                  Ver cardápio
+                </a>
+              ) : null}
+
               {googleMapsHref ? (
                 <a
                   href={googleMapsHref}
-                  className="inline-flex min-h-12 items-center justify-center border border-[var(--color-copper)] bg-[var(--color-copper)] px-6 text-sm font-bold text-[var(--color-background)] outline-offset-4 transition-colors hover:bg-transparent hover:text-[var(--color-foreground)]"
+                  className={`inline-flex min-h-12 items-center justify-center border px-6 text-sm font-bold outline-offset-4 transition-colors ${
+                    hasMenu
+                      ? 'border-white/25 text-[var(--color-foreground)] hover:border-[var(--color-copper)] hover:text-[var(--color-copper)]'
+                      : 'border-[var(--color-copper)] bg-[var(--color-copper)] text-[var(--color-background)] hover:bg-transparent hover:text-[var(--color-foreground)]'
+                  }`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

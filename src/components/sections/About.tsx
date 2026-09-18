@@ -12,17 +12,17 @@ function About({ restaurant }: AboutProps) {
       id="a-casa"
       className="bg-[var(--color-warm-background)] text-[var(--color-warm-foreground)]"
     >
-      <div className="site-container grid gap-9 border-b border-[var(--color-warm-line)] py-20 sm:gap-8 sm:py-20 lg:grid-cols-[0.8fr_1.7fr] lg:gap-16 lg:py-24">
+      <div className="site-container grid gap-8 border-b border-[var(--color-warm-line)] py-18 sm:gap-8 sm:py-20 lg:grid-cols-[0.8fr_1.45fr] lg:gap-14 lg:py-22">
         <p className="text-sm font-bold uppercase tracking-[0.24em] text-[var(--color-warm-muted)]">
           {about.introLabel}
         </p>
 
-        <p className="max-w-4xl font-display text-[clamp(2.2rem,6vw,5.6rem)] font-semibold leading-[0.98] text-[var(--color-warm-foreground)]">
+        <p className="max-w-3xl font-display text-[clamp(2rem,4.8vw,4rem)] font-semibold leading-[1] text-[var(--color-warm-foreground)]">
           {about.introText}
         </p>
       </div>
 
-      <div className="site-container grid gap-14 py-20 sm:gap-12 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-20 lg:py-28">
+      <div className="site-container grid gap-12 py-18 sm:gap-12 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-18 lg:py-24">
         <figure className="relative">
           <img
             className="aspect-[4/5] w-full object-cover sm:aspect-[16/11] lg:aspect-[5/6]"
@@ -48,7 +48,7 @@ function About({ restaurant }: AboutProps) {
             {about.eyebrow}
           </p>
 
-          <h2 className="max-w-xl font-display text-[clamp(2.6rem,6vw,5.2rem)] font-semibold leading-[0.94] text-[var(--color-warm-foreground)]">
+          <h2 className="max-w-xl font-display text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-[0.98] text-[var(--color-warm-foreground)]">
             {about.title}
           </h2>
 

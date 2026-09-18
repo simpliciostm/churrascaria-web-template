@@ -44,12 +44,12 @@ function Reviews({ restaurant }: ReviewsProps) {
       className="bg-[var(--color-warm-background)] text-[var(--color-warm-foreground)]"
     >
       <div className="site-container border-t border-[var(--color-warm-line)] py-20 sm:py-20 lg:py-28">
-        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.55fr] lg:gap-14">
+        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.35fr] lg:gap-12">
           <p className="text-sm font-bold uppercase tracking-[0.24em] text-[var(--color-warm-muted)]">
             {reviews.eyebrow}
           </p>
 
-          <h2 className="max-w-4xl font-display text-[clamp(2.6rem,6.5vw,5.8rem)] font-semibold leading-[0.92] text-[var(--color-warm-foreground)]">
+          <h2 className="max-w-3xl font-display text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[0.98] text-[var(--color-warm-foreground)]">
             {reviews.title}
           </h2>
         </div>

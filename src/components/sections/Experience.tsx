@@ -13,13 +13,13 @@ function Experience({ restaurant }: ExperienceProps) {
       id="experiencia"
       className="overflow-hidden bg-[var(--color-surface)] text-[var(--color-foreground)]"
     >
-      <div className="site-container py-20 sm:py-20 lg:py-28">
-        <div className="grid gap-9 border-b border-[var(--color-line)] pb-14 sm:gap-8 sm:pb-16 lg:grid-cols-[0.7fr_1.25fr_0.85fr] lg:gap-14 lg:pb-20">
+      <div className="site-container py-20 sm:py-20 lg:py-24">
+        <div className="grid gap-8 border-b border-[var(--color-line)] pb-12 sm:gap-8 sm:pb-14 lg:grid-cols-[0.7fr_1.2fr_0.9fr] lg:gap-12 lg:pb-16">
           <p className="text-sm font-bold uppercase tracking-[0.24em] text-[var(--color-copper)]">
             {experience.eyebrow}
           </p>
 
-          <h2 className="max-w-3xl font-display text-[clamp(2.8rem,7vw,6.4rem)] font-semibold leading-[0.9] text-[var(--color-foreground)]">
+          <h2 className="max-w-2xl font-display text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[0.98] text-[var(--color-foreground)]">
             {experience.title}
           </h2>
 
@@ -28,7 +28,7 @@ function Experience({ restaurant }: ExperienceProps) {
           </p>
         </div>
 
-        <div className="grid gap-11 pt-14 sm:gap-9 sm:pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16 lg:pt-20">
+        <div className="grid gap-11 pt-12 sm:gap-9 sm:pt-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16 lg:pt-18">
           <figure>
             <img
               className="aspect-[4/5] w-full object-cover sm:aspect-[16/10] lg:aspect-[5/4]"
@@ -46,7 +46,7 @@ function Experience({ restaurant }: ExperienceProps) {
               {experience.keywords.map((keyword) => (
                 <span
                   key={keyword}
-                  className="font-display text-[clamp(1.7rem,5vw,3.9rem)] font-semibold uppercase leading-none tracking-[0.08em] text-[var(--color-muted)]"
+                  className="font-display text-[clamp(1.45rem,4vw,3rem)] font-semibold uppercase leading-none tracking-[0.08em] text-[var(--color-muted)]"
                 >
                   {keyword}
                 </span>

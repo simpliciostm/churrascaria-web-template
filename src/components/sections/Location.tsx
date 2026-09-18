@@ -80,18 +80,18 @@ function Location({ restaurant }: LocationProps) {
       id="localizacao"
       className="bg-[var(--color-background)] text-[var(--color-foreground)]"
     >
-      <div className="site-container py-20 sm:py-20 lg:py-28">
-        <div className="grid gap-14 border-b border-[var(--color-line)] pb-16 sm:gap-12 sm:pb-16 lg:grid-cols-[0.75fr_1.25fr_0.9fr] lg:gap-16 lg:pb-20">
+      <div className="site-container py-20 sm:py-20 lg:py-24">
+        <div className="grid gap-12 border-b border-[var(--color-line)] pb-14 sm:gap-12 sm:pb-14 lg:grid-cols-[0.75fr_1.15fr_1fr] lg:gap-14 lg:pb-16">
           <p className="text-sm font-bold uppercase tracking-[0.24em] text-[var(--color-copper)]">
             {locationSection.eyebrow}
           </p>
 
           <div>
-            <h2 className="max-w-3xl font-display text-[clamp(3rem,7vw,6.6rem)] font-semibold leading-[0.9] text-[var(--color-foreground)]">
+            <h2 className="max-w-2xl font-display text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[0.98] text-[var(--color-foreground)]">
               {locationSection.title}
             </h2>
 
-            <p className="mt-8 max-w-xl text-[1.0625rem] leading-8 text-[var(--color-muted)] sm:mt-7 sm:text-lg">
+            <p className="mt-6 max-w-xl text-[1.0625rem] leading-8 text-[var(--color-muted)] sm:mt-7 sm:text-lg">
               {locationSection.description}
             </p>
           </div>

@@ -41,6 +41,42 @@ export interface RestaurantHeroContent {
   image: RestaurantHeroImage;
 }
 
+export interface RestaurantMenuImage {
+  src: string;
+  alt: string;
+  isPlaceholder?: boolean;
+  sourceUrl?: string;
+}
+
+export interface RestaurantMenuItem {
+  id: string;
+  name: string;
+  description?: string;
+  price?: number | null;
+  image?: RestaurantMenuImage;
+  featured?: boolean;
+}
+
+export interface RestaurantMenuCategory {
+  id: string;
+  label: string;
+  items: RestaurantMenuItem[];
+}
+
+export interface RestaurantMenuShowcaseContent {
+  eyebrow: string;
+  title: string;
+  description?: string;
+}
+
+export interface RestaurantMenuContent {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  categories: RestaurantMenuCategory[];
+  showcase: RestaurantMenuShowcaseContent;
+}
+
 export interface RestaurantSectionImage {
   src: string;
   alt: string;
@@ -128,6 +164,7 @@ export interface RestaurantConfig {
     reservations: NullableString;
   };
   hero: RestaurantHeroContent;
+  menu: RestaurantMenuContent;
   about: RestaurantAboutContent;
   experience: RestaurantExperienceContent;
   gallery: RestaurantGalleryContent;

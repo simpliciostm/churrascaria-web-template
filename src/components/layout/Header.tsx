@@ -8,6 +8,7 @@ interface HeaderProps {
 
 const navigationItems = [
   { label: 'Início', href: '#inicio' },
+  { label: 'Cardápio', href: '#cardapio' },
   { label: 'A casa', href: '#a-casa' },
   { label: 'Experiência', href: '#experiencia' },
   { label: 'Galeria', href: '#galeria' },
@@ -70,14 +71,14 @@ function Header({ restaurant }: HeaderProps) {
         </a>
 
         <nav
-          className="hidden items-center gap-9 lg:flex xl:gap-10"
+          className="hidden items-center gap-6 lg:flex xl:gap-9"
           aria-label="Navegação principal"
         >
           {navigationItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-[0.95rem] font-semibold text-[var(--color-muted)] outline-offset-8 transition-colors hover:text-[var(--color-foreground)]"
+              className="text-[0.92rem] font-semibold text-[var(--color-muted)] outline-offset-8 transition-colors hover:text-[var(--color-foreground)] xl:text-[0.95rem]"
             >
               {item.label}
             </a>

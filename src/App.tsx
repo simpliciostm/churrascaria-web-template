@@ -5,6 +5,8 @@ import Experience from './components/sections/Experience';
 import Gallery from './components/sections/Gallery';
 import Hero from './components/sections/Hero';
 import Location from './components/sections/Location';
+import Menu from './components/sections/Menu';
+import MenuShowcase from './components/sections/MenuShowcase';
 import Reviews from './components/sections/Reviews';
 import { restaurant } from './data/restaurant';
 
@@ -14,6 +16,8 @@ function App() {
       <Header restaurant={restaurant} />
       <main>
         <Hero restaurant={restaurant} />
+        <Menu restaurant={restaurant} />
+        <MenuShowcase restaurant={restaurant} />
         <About restaurant={restaurant} />
         <Experience restaurant={restaurant} />
         <Gallery restaurant={restaurant} />

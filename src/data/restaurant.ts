@@ -48,6 +48,127 @@ export const restaurant: RestaurantConfig = {
       isDemo: true,
     },
   },
+  menu: {
+    // Conteúdo demonstrativo do template. Substituir categorias, pratos, bebidas, imagens e preços por dados reais e autorizados durante a personalização.
+    eyebrow: 'DO FOGO À MESA',
+    title: 'Nosso cardápio',
+    description:
+      'Uma seleção demonstrativa para apresentar pratos, acompanhamentos e outras opções da casa.',
+    categories: [
+      {
+        id: 'churrasco',
+        label: 'CHURRASCO',
+        items: [
+          {
+            id: 'picanha-na-brasa',
+            name: 'Picanha na brasa',
+            description: 'Corte servido com acompanhamentos da casa.',
+            price: 79.9,
+            featured: true,
+            image: {
+              src: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=82',
+              alt: 'Carne sendo preparada na brasa em imagem demonstrativa',
+              isPlaceholder: true,
+              sourceUrl: 'https://unsplash.com/photos/cooked-meat-on-black-metal-grill-9aOswReDKPo',
+            },
+          },
+          {
+            id: 'contra-file',
+            name: 'Contra-filé',
+            description: 'Preparado na brasa e servido à mesa.',
+            price: 64.9,
+          },
+          {
+            id: 'linguica-artesanal',
+            name: 'Linguiça artesanal',
+            description: 'Porção demonstrativa preparada na churrasqueira.',
+            price: 29.9,
+          },
+        ],
+      },
+      {
+        id: 'pratos',
+        label: 'PRATOS',
+        items: [
+          {
+            id: 'prato-executivo',
+            name: 'Prato executivo',
+            description: 'Arroz, feijão, acompanhamento e opção de carne.',
+            price: 34.9,
+            featured: true,
+            image: {
+              src: 'https://images.unsplash.com/photo-1743630458593-286a8ae99625?auto=format&fit=crop&w=1200&q=82',
+              alt: 'Prato brasileiro com arroz, feijão e acompanhamentos em imagem demonstrativa',
+              isPlaceholder: true,
+              sourceUrl:
+                'https://unsplash.com/photos/a-plate-of-rice-beans-and-plantains-Ycuvvz_Px8c',
+            },
+          },
+          {
+            id: 'almoco-da-casa',
+            name: 'Almoço da casa',
+            description: 'Opção demonstrativa para apresentar uma refeição completa.',
+            price: 42.9,
+          },
+        ],
+      },
+      {
+        id: 'acompanhamentos',
+        label: 'ACOMPANHAMENTOS',
+        items: [
+          {
+            id: 'farofa-da-casa',
+            name: 'Farofa da casa',
+            description: 'Farofa crocante para acompanhar o churrasco.',
+            price: 12.9,
+          },
+          {
+            id: 'porcao-de-mandioca',
+            name: 'Porção de mandioca',
+            description: 'Acompanhamento demonstrativo servido para compartilhar.',
+            price: 18.9,
+            featured: true,
+            image: {
+              src: 'https://images.unsplash.com/photo-1621851709622-e19c9a4f0cc5?auto=format&fit=crop&w=1200&q=82',
+              alt: 'Churrasqueira acesa em imagem demonstrativa para cardápio',
+              isPlaceholder: true,
+              sourceUrl:
+                'https://unsplash.com/photos/burning-charcoal-on-charcoal-grill-SHFQI_DGgAU',
+            },
+          },
+        ],
+      },
+      {
+        id: 'bebidas',
+        label: 'BEBIDAS',
+        items: [
+          {
+            id: 'agua-mineral',
+            name: 'Água mineral',
+            description: 'Com ou sem gás.',
+            price: 5.9,
+          },
+          {
+            id: 'refrigerante',
+            name: 'Refrigerante',
+            description: 'Opção demonstrativa para acompanhar a refeição.',
+            price: 8.9,
+          },
+          {
+            id: 'suco-natural',
+            name: 'Suco natural',
+            description: 'Sabores variados conforme disponibilidade.',
+            price: 12.9,
+          },
+        ],
+      },
+    ],
+    showcase: {
+      eyebrow: 'ALGUNS DOS NOSSOS PRATOS',
+      title: 'Da brasa para a mesa.',
+      description: 'Uma seleção visual demonstrativa para apresentar sabores e pratos da casa.',
+    },
+  },
   about: {
     introLabel: 'A casa',
     introText: 'Tem lugar que a gente escolhe pela comida. E volta porque se sente bem.',
@@ -93,9 +214,9 @@ export const restaurant: RestaurantConfig = {
     ],
   },
   gallery: {
-    eyebrow: 'Por aqui',
-    title: 'Da brasa para a mesa.',
-    description: 'Um pouco do que faz parte do almoço por aqui.',
+    eyebrow: 'POR AQUI',
+    title: 'Entre a brasa e a mesa.',
+    description: 'Fogo, preparo e momentos que fazem parte da experiência.',
     images: [
       {
         // Imagem demonstrativa genérica. Substituir por fotografia autorizada antes de publicação comercial.
