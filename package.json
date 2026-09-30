@@ -6,9 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:production": "npm run validate:production && npm run build",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "publication:status": "node scripts/validateRestaurantConfig.mjs --status",
+    "validate:content": "node scripts/validateRestaurantConfig.mjs",
+    "validate:production": "node scripts/validateRestaurantConfig.mjs --production"
   },
   "dependencies": {
     "lucide-react": "^1.47.0",

@@ -1,21 +1,37 @@
 import { ArrowDown } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useHeroScroll } from '../../hooks/useHeroScroll';
 import type { RestaurantConfig } from '../../types/restaurant';
 
 interface HeroProps {
   restaurant: RestaurantConfig;
 }
 
+function getPrefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 function Hero({ restaurant }: HeroProps) {
   const { hero } = restaurant;
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(getPrefersReducedMotion);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const shouldRenderVideo = Boolean(hero.video && !prefersReducedMotion);
+  const { heroRef, imageRef, contentRef } = useHeroScroll(shouldRenderVideo);
   const hasMenu = restaurant.menu.categories.some((category) => category.items.length > 0);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    mediaQuery.addEventListener('change', updatePreference);
+    return () => mediaQuery.removeEventListener('change', updatePreference);
+  }, []);
+
   return (
-    <section
-      id="inicio"
-      className="relative isolate min-h-[38rem] overflow-hidden bg-[var(--color-background)] sm:min-h-[42rem] lg:min-h-[min(82svh,46rem)]"
-    >
+    <section id="inicio" className="hero" ref={heroRef}>
       <img
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-[57%_center] sm:object-center"
+        ref={imageRef}
+        className="hero__image"
         src={hero.image.src}
         alt={hero.image.alt}
         width={hero.image.width ?? 2200}
@@ -23,47 +39,41 @@ function Hero({ restaurant }: HeroProps) {
         fetchPriority="high"
         decoding="async"
       />
-      <div
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(21,18,15,0.9)_0%,rgba(21,18,15,0.68)_36%,rgba(21,18,15,0.16)_78%,rgba(21,18,15,0.48)_100%)]"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-[linear-gradient(0deg,rgba(21,18,15,0.78),rgba(21,18,15,0))]"
-        aria-hidden="true"
-      />
-
-      <div className="site-container flex min-h-[38rem] items-center pb-12 pt-28 sm:min-h-[42rem] sm:pb-14 sm:pt-32 lg:min-h-[min(82svh,46rem)] lg:pt-36">
-        <div className="max-w-[39rem]">
-          <p className="mb-4 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.28em] text-[var(--color-muted)] sm:text-sm">
-            <span className="h-px w-12 bg-[var(--color-copper)]" aria-hidden="true" />
-            {hero.eyebrow}
-          </p>
-
-          <h1 className="max-w-[11ch] font-display text-[clamp(3rem,7vw,4.65rem)] font-semibold leading-[0.9] text-[var(--color-foreground)]">
-            {hero.title}
-          </h1>
-
-          <p className="mt-5 max-w-[30rem] text-[1.0625rem] font-semibold leading-7 text-[var(--color-muted)] sm:text-xl sm:leading-8">
-            {hero.description}
-          </p>
-
+      {shouldRenderVideo && hero.video ? (
+        <video
+          className={`hero__video ${isVideoReady ? 'hero__video--ready' : ''}`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={hero.image.src}
+          aria-hidden="true"
+          tabIndex={-1}
+          onLoadedData={() => setIsVideoReady(true)}
+        >
+          <source src={hero.video.src} type={hero.video.type} />
+        </video>
+      ) : null}
+      <div className="hero__veil" aria-hidden="true" />
+      <div className="site-container hero__layout">
+        <div className="hero__content" ref={contentRef}>
+          <p className="eyebrow hero-reveal hero-reveal--1">{hero.eyebrow}</p>
+          <h1 className="hero-reveal hero-reveal--2">{hero.title}</h1>
+          <p className="hero__description hero-reveal hero-reveal--3">{hero.description}</p>
           {hasMenu ? (
-            <a
-              href="#cardapio"
-              className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 border border-[var(--color-copper)] bg-[var(--color-copper)] px-6 text-sm font-bold text-[var(--color-background)] outline-offset-4 transition-colors hover:bg-transparent hover:text-[var(--color-foreground)] sm:min-h-13 sm:px-7"
-            >
-              Ver cardápio
-              <ArrowDown className="size-4" aria-hidden="true" />
+            <a href="#cardapio" className="button button--gold hero-reveal hero-reveal--4">
+              Ver cardápio <ArrowDown aria-hidden="true" />
             </a>
           ) : null}
         </div>
       </div>
 
-      {hero.image.isDemo ? (
-        <p className="sr-only">
-          Imagem demonstrativa temporária. Substituir por fotografia autorizada antes de publicação
-          comercial.
-        </p>
+      <a href="#informacoes" className="hero__scroll">
+        <span aria-hidden="true" />
+      </a>
+      {hero.image.isPlaceholder ? (
+        <p className="sr-only">Imagem demonstrativa temporária.</p>
       ) : null}
     </section>
   );

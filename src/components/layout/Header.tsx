@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useEffect, useId, useState } from 'react';
+import { useActiveSection } from '../../hooks/useActiveSection';
 import type { RestaurantConfig } from '../../types/restaurant';
 
 interface HeaderProps {
@@ -15,64 +16,59 @@ const navigationItems = [
   { label: 'Localização', href: '#localizacao' },
 ];
 
+const navigationSectionIds = navigationItems.map((item) => item.href.slice(1));
+
 function Header({ restaurant }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const menuId = useId();
+  const activeSection = useActiveSection(navigationSectionIds);
+
+  useEffect(() => {
+    const updateHeader = () => setIsScrolled(window.scrollY > 56);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    return () => window.removeEventListener('scroll', updateHeader);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-
     return () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
 
   useEffect(() => {
-    if (!isMenuOpen) {
-      return;
-    }
-
+    if (!isMenuOpen) return;
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsMenuOpen(false);
-      }
+      if (event.key === 'Escape') setIsMenuOpen(false);
     };
-
     window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen]);
 
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-30 border-b border-white/10 bg-[rgba(21,18,15,0.22)] text-[var(--color-foreground)] backdrop-blur-[2px]">
-      <div className="site-container flex h-20 items-center justify-between gap-6 lg:h-24">
+    <header className={`site-header ${isScrolled || isMenuOpen ? 'site-header--scrolled' : ''}`}>
+      <div className="site-container site-header__inner">
         <a
           href="#inicio"
-          className="inline-flex flex-col outline-offset-8 transition-colors hover:text-[var(--color-muted)]"
+          className="brand"
           aria-label={`${restaurant.name} - voltar ao início`}
           onClick={closeMenu}
         >
-          <span className="font-display text-[1.65rem] font-semibold leading-none tracking-[0.12em] sm:text-[1.9rem]">
-            {restaurant.shortName}
-          </span>
-          <span className="mt-1 text-[0.62rem] font-bold uppercase tracking-[0.28em] text-[var(--color-muted)]">
-            {restaurant.footer.category}
-          </span>
+          <span className="brand__name">{restaurant.shortName}</span>
+          <span className="brand__category">{restaurant.footer.category}</span>
         </a>
 
-        <nav
-          className="hidden items-center gap-6 lg:flex xl:gap-9"
-          aria-label="Navegação principal"
-        >
+        <nav className="desktop-nav" aria-label="Navegação principal">
           {navigationItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-[0.95rem] font-semibold text-white/82 outline-offset-8 transition-colors hover:text-[var(--color-copper)]"
+              className={activeSection === item.href.slice(1) ? 'is-active' : undefined}
+              aria-current={activeSection === item.href.slice(1) ? 'location' : undefined}
             >
               {item.label}
             </a>
@@ -81,41 +77,35 @@ function Header({ restaurant }: HeaderProps) {
 
         <button
           type="button"
-          className="inline-flex size-12 items-center justify-center border border-white/20 text-[var(--color-foreground)] outline-offset-4 transition-colors hover:border-[var(--color-copper)] hover:text-[var(--color-copper)] lg:hidden"
+          className="menu-toggle"
           aria-label={isMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
           aria-expanded={isMenuOpen}
           aria-controls={menuId}
           onClick={() => setIsMenuOpen((current) => !current)}
         >
-          {isMenuOpen ? (
-            <X className="size-5" aria-hidden="true" />
-          ) : (
-            <Menu className="size-5" aria-hidden="true" />
-          )}
+          {isMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </div>
 
       <div
         id={menuId}
-        className={`site-container lg:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
+        className={`mobile-menu ${isMenuOpen ? 'mobile-menu--open' : ''}`}
         aria-hidden={!isMenuOpen}
+        hidden={!isMenuOpen}
       >
-        <nav
-          className="mb-5 border border-white/12 bg-[rgba(21,18,15,0.98)] p-5"
-          aria-label="Navegação mobile"
-        >
-          <div className="grid gap-1">
-            {navigationItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="min-h-12 px-1 py-3 text-[1.0625rem] font-semibold text-[var(--color-muted)] outline-offset-4 transition-colors hover:text-[var(--color-foreground)]"
-                onClick={closeMenu}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
+        <nav className="site-container" aria-label="Navegação mobile">
+          {navigationItems.map((item, index) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={activeSection === item.href.slice(1) ? 'is-active' : undefined}
+              aria-current={activeSection === item.href.slice(1) ? 'location' : undefined}
+              onClick={closeMenu}
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              {item.label}
+            </a>
+          ))}
         </nav>
       </div>
     </header>

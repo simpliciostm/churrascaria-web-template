@@ -1,25 +1,31 @@
 import type { RestaurantConfig } from '../types/restaurant.ts';
 
+const heroSteakVideo = new URL('../assets/restaurant/hero/hero-steak.mp4', import.meta.url).href;
+
 export const restaurant: RestaurantConfig = {
-  name: 'Churrascaria Tuvalu',
-  shortName: 'TUVALU',
+  publication: {
+    status: 'demo',
+  },
+  name: 'Churrascaria NOME',
+  shortName: 'NOME',
   slogan: null,
   description: null,
-  phone: '(14) 3203-1328',
+  phone: '(14) 0000-0000',
   whatsapp: null,
   address: {
-    street: 'Rua Christiano Pagani',
-    number: '2-64',
-    district: 'Vila Engler',
+    street: '',
+    number: '',
+    district: '',
     city: 'Bauru',
     state: 'SP',
-    postalCode: '17047-144',
+    postalCode: '00000-000',
     country: 'Brasil',
     googleMapsUrl: null,
+    googleMapsEmbedUrl: null,
   },
   openingHours: [],
   socialLinks: {
-    instagram: '@churrascaria_tuvalu',
+    instagram: '@churrascaria_nome',
     facebook: null,
     tripadvisor: null,
   },
@@ -47,12 +53,17 @@ export const restaurant: RestaurantConfig = {
       alt: 'Carne sendo preparada na brasa em imagem demonstrativa de churrasco',
       width: 2200,
       height: 1400,
-      isDemo: true,
+      isPlaceholder: true,
       sourceUrl: 'https://unsplash.com/photos/cooked-meat-on-black-metal-grill-9aOswReDKPo',
+    },
+    video: {
+      src: heroSteakVideo,
+      type: 'video/mp4',
     },
   },
   menu: {
     // Conteúdo demonstrativo do template. Substituir categorias, pratos, bebidas, imagens e preços por dados reais e autorizados durante a personalização.
+    isPlaceholder: true,
     eyebrow: 'NOSSO CARDÁPIO',
     title: 'Cortes, pratos e acompanhamentos.',
     description: 'Do churrasco aos pratos da casa, veja opções e preços de forma simples.',

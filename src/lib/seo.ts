@@ -56,6 +56,46 @@ function normalizeAbsoluteUrl(url: string | null) {
   return /^https?:\/\/\S+$/i.test(normalizedUrl) ? normalizedUrl : null;
 }
 
+function normalizePublicHttpsUrl(url: string | null) {
+  const normalizedUrl = normalizeAbsoluteUrl(url);
+
+  if (!normalizedUrl) {
+    return null;
+  }
+
+  const match = /^https:\/\/([^/?#]+)(?:[/?#]|$)/i.exec(normalizedUrl);
+
+  if (!match) {
+    return null;
+  }
+
+  const hostname = (match[1].split('@').pop() ?? '').split(':')[0].toLowerCase();
+  const forbiddenHosts = [
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+    'example.com',
+    'example.org',
+    'example.net',
+  ];
+
+  if (
+    forbiddenHosts.includes(hostname) ||
+    hostname.endsWith('.localhost') ||
+    hostname.endsWith('.example.com') ||
+    hostname.endsWith('.example.org') ||
+    hostname.endsWith('.example.net')
+  ) {
+    return null;
+  }
+
+  return normalizedUrl;
+}
+
+export function isEffectivelyIndexable(restaurant: RestaurantConfig) {
+  return restaurant.publication.status === 'production' && restaurant.seo.indexable === true;
+}
+
 export function createInstagramUrl(instagram: string | null) {
   if (!instagram) {
     return null;
@@ -100,7 +140,7 @@ function createPostalAddress(restaurant: RestaurantConfig) {
 export function buildSeoMetadata(restaurant: RestaurantConfig): SeoMetadata {
   const title = createTitle(restaurant);
   const description = restaurant.seo.description;
-  const robots = restaurant.seo.indexable ? 'index, follow' : 'noindex, nofollow';
+  const robots = isEffectivelyIndexable(restaurant) ? 'index, follow' : 'noindex, nofollow';
   const locale = restaurant.seo.locale ?? 'pt_BR';
   const siteUrl = normalizeAbsoluteUrl(restaurant.seo.siteUrl);
   const ogImage = normalizeAbsoluteUrl(restaurant.seo.ogImage);
@@ -162,4 +202,43 @@ export function renderSeoHead(metadata: SeoMetadata, siteName: string) {
   tags.push(createJsonLdScript(metadata.jsonLd));
 
   return tags.join('\n    ');
+}
+
+export function renderRobotsTxt(restaurant: RestaurantConfig) {
+  if (!isEffectivelyIndexable(restaurant)) {
+    return 'User-agent: *\nDisallow: /\n';
+  }
+
+  const siteUrl = normalizePublicHttpsUrl(restaurant.seo.siteUrl);
+  const lines = ['User-agent: *', 'Allow: /'];
+
+  if (siteUrl) {
+    lines.push(`Sitemap: ${siteUrl.replace(/\/$/, '')}/sitemap.xml`);
+  }
+
+  return `${lines.join('\n')}\n`;
+}
+
+export function renderSitemapXml(restaurant: RestaurantConfig) {
+  if (!isEffectivelyIndexable(restaurant)) {
+    return null;
+  }
+
+  const siteUrl = normalizePublicHttpsUrl(restaurant.seo.siteUrl);
+
+  if (!siteUrl) {
+    return null;
+  }
+
+  const loc = escapeHtml(siteUrl);
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    '  <url>',
+    `    <loc>${loc}</loc>`,
+    '  </url>',
+    '</urlset>',
+    '',
+  ].join('\n');
 }

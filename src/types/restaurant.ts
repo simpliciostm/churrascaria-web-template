@@ -1,5 +1,11 @@
 export type NullableString = string | null;
 
+export type RestaurantPublicationStatus = 'template' | 'demo' | 'production';
+
+export interface RestaurantPublicationConfig {
+  status: RestaurantPublicationStatus;
+}
+
 export interface RestaurantAddress {
   street: NullableString;
   number: NullableString;
@@ -9,6 +15,7 @@ export interface RestaurantAddress {
   postalCode: NullableString;
   country: string;
   googleMapsUrl: NullableString;
+  googleMapsEmbedUrl: NullableString;
 }
 
 export interface RestaurantSocialLinks {
@@ -30,29 +37,37 @@ export interface RestaurantOpeningHour {
   time: string;
 }
 
-export interface RestaurantHeroImage {
+export type RestaurantImageCategory = 'fire' | 'food' | 'grill' | 'table';
+
+export interface RestaurantImage {
   src: string;
   alt: string;
   width?: number;
   height?: number;
-  isDemo: boolean;
-  sourceUrl?: string;
+  isPlaceholder: boolean;
+  sourceUrl?: NullableString;
+  creditLabel?: NullableString;
+  creditUrl?: NullableString;
+  label?: string;
+  category?: RestaurantImageCategory;
 }
+
+export type RestaurantHeroImage = RestaurantImage;
+
+export interface RestaurantHeroVideo {
+  src: string;
+  type: 'video/mp4';
+}
+
+export type RestaurantMenuImage = RestaurantImage;
+export type RestaurantSectionImage = RestaurantImage;
 
 export interface RestaurantHeroContent {
   eyebrow: string;
   title: string;
   description: string;
   image: RestaurantHeroImage;
-}
-
-export interface RestaurantMenuImage {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  isPlaceholder?: boolean;
-  sourceUrl?: string;
+  video?: RestaurantHeroVideo;
 }
 
 export interface RestaurantMenuItem {
@@ -77,24 +92,12 @@ export interface RestaurantMenuShowcaseContent {
 }
 
 export interface RestaurantMenuContent {
+  isPlaceholder: boolean;
   eyebrow: string;
   title: string;
   description?: string;
   categories: RestaurantMenuCategory[];
   showcase: RestaurantMenuShowcaseContent;
-}
-
-export interface RestaurantSectionImage {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  isPlaceholder: boolean;
-  sourceUrl?: string;
-  creditLabel?: string;
-  creditUrl?: string;
-  label?: string;
-  category?: 'fire' | 'food' | 'grill' | 'table';
 }
 
 export interface RestaurantAboutContent {
@@ -164,6 +167,7 @@ export interface RestaurantSeoConfig {
 }
 
 export interface RestaurantConfig {
+  publication: RestaurantPublicationConfig;
   name: string;
   shortName: string;
   slogan: NullableString;

@@ -10,8 +10,11 @@ import MenuShowcase from './components/sections/MenuShowcase';
 import QuickInfo from './components/sections/QuickInfo';
 import Reviews from './components/sections/Reviews';
 import { restaurant } from './data/restaurant';
+import { useScrollReveal } from './hooks/useScrollReveal';
 
 function App() {
+  useScrollReveal();
+
   return (
     <>
       <Header restaurant={restaurant} />
