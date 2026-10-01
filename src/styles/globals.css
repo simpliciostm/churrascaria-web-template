@@ -1012,6 +1012,15 @@ h2 {
 .site-footer__actions svg {
   width: 1rem;
 }
+.site-footer__demo-notice {
+  margin: 0;
+  padding-top: 1.35rem;
+  color: #aa9a85;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  line-height: 1.6;
+}
 .site-footer__bottom {
   display: flex;
   justify-content: space-between;
@@ -1320,6 +1329,9 @@ h2 {
   }
   .site-footer nav {
     gap: 0.8rem 1.5rem;
+  }
+  .site-footer__demo-notice {
+    text-align: center;
   }
   .site-footer__bottom {
     flex-direction: column;

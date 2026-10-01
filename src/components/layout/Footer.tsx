@@ -64,6 +64,9 @@ function Footer({ restaurant }: FooterProps) {
             </button>
           </div>
         </div>
+        {restaurant.publication.status === 'demo' ? (
+          <p className="site-footer__demo-notice">Projeto demonstrativo — site não oficial</p>
+        ) : null}
         <div className="site-footer__bottom">
           <div>
             <p>
